@@ -1,6 +1,10 @@
 Plan for this project 
 
-- First I"m just gonna do some NLP algorithms 
+- First the user would ideally login (register & login) 
+    - ideally I'd want to use the register & login lambdas from the fitness app (but who knows) 
+
+- Home.html is where the user is logged in and submitting a journal entries and then when he submits tahts going to go into aws 
+    - It'll either put the thing in s3 and then trigger some lambdas and sage maker processes to do some nlp stuff 
 
 - src/ 
     - This is going to contain the Web UI (flask UI) - for journaling... 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Main Style Sheet -->
-    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/Home.css') }}">
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
@@ -43,7 +43,7 @@
                 class="entry-text-box"
                 placeholder="What's on your mind today? 💭"
               ></textarea>
-              <button class="btn-main entry-submit-btn" type="submit">Submit</button>
+              <button onclick="handleUserJournalEntry()" class="btn-main entry-submit-btn" id="submitbuttonforjournalentry" type="submit">Submit</button>
             </form>
           </div>
         </div>
@@ -57,6 +57,19 @@
       </div>
     </section>
 
-    <script src="index.js"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='Home.js')}}"></script>
+    <script>
+        function handleUserJournalEntry(){
+            var journal_title = document.getElementById("entry-title").value; 
+            var journal_data = document.getElementById("entry").value; 
+            console.log("[Home.html handleUserJournalEntry() line 65] journal_title: " + journal_title); 
+            console.log("[Home.html handleUserJOurnalEntry() line 66] journal_data: " + journal_data); 
+
+            //From here this journal entry is going be shipped to s3 bucket 
+            // ideally this would trigger s3 event notifications to be triggered., which would execute lambdas 
+
+
+        }
+    </script>
   </body>
 </html>
