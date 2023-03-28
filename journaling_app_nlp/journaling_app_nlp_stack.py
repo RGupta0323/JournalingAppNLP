@@ -31,6 +31,9 @@ class JournalingAppNlpStack(Stack):
         notification = s3_notify.LambdaDestination(lambda_func)
         notification.bind(self, journal_entries_s3_bucket)
 
+        journal_entries_s3_bucket.add_object_created_notification(
+           notification, s3.NotificationKeyFilter(suffix='.txt'))
+
          # Step function / eventbridge here to handle data formatting 
 
         # Sage maker 
