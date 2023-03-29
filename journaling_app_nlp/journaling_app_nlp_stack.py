@@ -25,7 +25,7 @@ class JournalingAppNlpStack(Stack):
         lambda_func = _lambda.Function(self, 'Journal_Entry_Created_Lambda',
                        runtime=_lambda.Runtime.PYTHON_3_8,
                        handler='Journal_Entry_Created_Lambda.handler',
-                       code=_lambda.Code.asset('src'),
+                       code=_lambda.Code.from_asset('src'),
                        environment={'BUCKET_NAME':
                                     journal_entries_s3_bucket.bucket_name})
 
