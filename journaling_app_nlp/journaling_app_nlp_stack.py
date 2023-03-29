@@ -15,7 +15,9 @@ class JournalingAppNlpStack(Stack):
         super().__init__(scope, construct_id, **kwargs)
 
         
-        # s3 bucket to store user journal entries 
+        # s3 bucket to store user journal entries - this is when a user creates a journal entry. 
+        # May need a folder structure in the future for after the file is modified by the lambda (Ready for sagemaker), 
+        # then another flag or tag will be needed to know when sagemaker model has ran... 
         journal_entries_s3_bucket = s3.Bucket(self, "JournalingNLPAppJournalEntries",
                                                encryption=s3.BucketEncryption.KMS, bucket_name="JournalingNLPAppJournalEntries")
         
@@ -33,14 +35,14 @@ class JournalingAppNlpStack(Stack):
 
         journal_entries_s3_bucket.add_object_created_notification(
            notification, s3.NotificationKeyFilter(suffix='.txt'))
+        
 
-         # Step function / eventbridge here to handle data formatting 
+
+
+         # Step function / eventbridge here to handle data formatting - this might not be necessary if the lambda can do the work itself
+         # then it will try to 'trigger' the sagemaker model... 
 
         # Sage maker 
         
-        # dynamodb to store user data 
-
-        # light sail instance that's going to be hosting the flask app 
+        # dynamodb to store user data (for login & register)
         
-
-        # Lambdas 
