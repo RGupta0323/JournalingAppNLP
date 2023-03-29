@@ -49,7 +49,7 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: cdk synth
-        run: cdk synth fitness-app-dev-stack
+        run: cdk synth JournalingAppNlpStack
 
       - name: cdk deploy
-        run: cdk deploy fitness-app-dev-stack --require-approval never
+        run: cdk deploy JournalingAppNlpStack --require-approval never

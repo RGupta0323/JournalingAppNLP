@@ -44,7 +44,7 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: cdk synth
-        run: cdk synth fitness-app-dev-stack
+        run: cdk synth JournalingAppNlpStack
 
       - name: cdk destroy
-        run: cdk destroy fitness-app-dev-stack --require-approval never --force
+        run: cdk destroy fJournalingAppNlpStack --require-approval never --force
