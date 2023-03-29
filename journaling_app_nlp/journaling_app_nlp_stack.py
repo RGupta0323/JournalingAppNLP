@@ -19,7 +19,7 @@ class JournalingAppNlpStack(Stack):
         # May need a folder structure in the future for after the file is modified by the lambda (Ready for sagemaker), 
         # then another flag or tag will be needed to know when sagemaker model has ran... 
         journal_entries_s3_bucket = s3.Bucket(self, "JournalingNLPAppJournalEntries".lower(),
-                                               encryption=s3.BucketEncryption.KMS, bucket_name="JournalingNLPAppJournalEntries".lower())
+                                               encryption=s3.BucketEncryption.KMS)
         
         # lambda to handle journal entries 
         lambda_func = _lambda.Function(self, 'Journal_Entry_Created_Lambda',
