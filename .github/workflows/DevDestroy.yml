@@ -47,4 +47,4 @@ jobs:
         run: cdk synth JournalingAppNlpStack
 
       - name: cdk destroy
-        run: cdk destroy fJournalingAppNlpStack --require-approval never --force
+        run: cdk destroy JournalingAppNlpStack --require-approval never --force
