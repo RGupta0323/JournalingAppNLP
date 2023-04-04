@@ -34,7 +34,7 @@ def usersubmitsjournalentry():
         client = boto3.client("s3") 
         print("[app.py usersubmitsjournalentry() line 26] Uploading user journal entry data into s3 bucket")
         # (TODO) the key should be the email of the user and the timestamp; format: <email>-<timestamp>
-        client.put_object(Body=journal_data, Bucket=s3_bucket, Key="UserJournalEntry-{}".format(ct)) 
+        client.put_object(Body=journal_data, Bucket=s3_bucket, Key="UserJournalEntry-{}.txt".format(ct)) 
 
     except Exception as ex: 
         print ("[app.py usersubmitsjournalentry() line 32] ERROR OCCURED - Exception message: {}".format(ex))
