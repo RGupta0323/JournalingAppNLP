@@ -17,6 +17,9 @@
       href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
       rel="stylesheet"
     />
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    
     <title>Journaling App - Home </title>
   </head>
   <body>
@@ -64,9 +67,13 @@
             var journal_data = document.getElementById("entry").value; 
             console.log("[Home.html handleUserJournalEntry() line 65] journal_title: " + journal_title); 
             console.log("[Home.html handleUserJOurnalEntry() line 66] journal_data: " + journal_data); 
+            var user_data = {"journal_title": journal_title, "journal_data": journal_data}
+            console.log("[Home.html handleUserJournalEntry() line 71] user_data: " + user_data); 
 
-            //From here this journal entry is going be shipped to s3 bucket 
-            // ideally this would trigger s3 event notifications to be triggered., which would execute lambdas 
+            //From here this journal entry to be shipped to an endpoint in app.py 
+            // that endpoint will then ship it to s3 and trigger an event notification. 
+            $.post("/usersubmitsjournalentry", user_data)
+
 
 
         }
