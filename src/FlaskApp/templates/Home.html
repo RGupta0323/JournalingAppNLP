@@ -73,7 +73,9 @@
             //From here this journal entry to be shipped to an endpoint in app.py 
             // that endpoint will then ship it to s3 and trigger an event notification. 
             $.post("/usersubmitsjournalentry", user_data)
-
+        
+            //re-direct to /journalentrysubmitted 
+            window.location.href=window.location.href+"/journalentrysubmitted"; 
 
 
         }
